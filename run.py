@@ -13,8 +13,6 @@ if __name__ == "main":
 def home():
     form = FileForm()
     if form.validate_on_submit():
-        errors = []
-
         form_top = int(form.top.data) if form.top.data else 0
         form_down = int(form.down.data) if form.down.data else 0
         form_right = int(form.right.data) if form.right.data else 0
@@ -31,20 +29,15 @@ def home():
         form_height = int(form.height.data) if form.height.data else height
         form_width = int(form.width.data) if form.width.data else width
 
-        if errors:
-            flash(errors, category="file_upload")
-            return redirect(url_for('home'))
-        else:
-            print("ELSE")
-            crop = (form_left, form_top, form_right, form_down)
-            scale = (form_width, form_height)
-            image = treat_image(image,
-                                rotation=form_rotation,
-                                scale=scale,
-                                crop=crop)
-            image.show()
-            flash("Manipulação da imagem feita com sucesso", "success")
-            return redirect(url_for('home'))
+        crop = (form_left, form_top, form_right, form_down)
+        scale = (form_width, form_height)
+        image = treat_image(image,
+                            rotation=form_rotation,
+                            scale=scale,
+                            crop=crop)
+        image.show()
+        flash("Manipulação da imagem feita com sucesso", "success")
+        return redirect(url_for('home'))
     return render_template('index.html', form=form)
 
 

@@ -9,10 +9,13 @@
   <body>
     <h1>Bem vindo ao mundo do Flask!</h1>
     <form action="" method="post" enctype="multipart/form-data">
-      {{ form.csrf_token }} {% with messages = get_flashed_messages(category_filter=["file_upload"]) %} {% if messages
-      %} {% for message in messages %}
-      <p style="color: red">{{ message }}</p>
-      {% endfor %} {% endif %} {% endwith %}
+      {{ form.csrf_token }} 
+      
+      {% with messages = get_flashed_messages(category_filter=["success"]) %}
+          {% if messages %} 
+            <p style="color: green">{{ messages.pop() }}</p>
+          {% endif %} 
+      {% endwith %}
 
       <div>
         <p>{{ form.image.label }} {{ form.image }}</p>
