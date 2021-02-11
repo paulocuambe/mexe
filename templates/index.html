@@ -8,6 +8,38 @@
   </head>
   <body>
     <h1>Bem vindo ao mundo do Flask!</h1>
+    <form action="" method="post" enctype="multipart/form-data">
+      {{ form.csrf_token }} {% with messages = get_flashed_messages(category_filter=["file_upload"]) %} {% if messages
+      %} {% for message in messages %}
+      <p style="color: red">{{ message }}</p>
+      {% endfor %} {% endif %} {% endwith %}
+
+      <div>
+        <p>{{ form.image.label }} {{ form.image }}</p>
+        {% if form.image.errors %} {{ form.image.errors.pop() }} {% endif %}
+      </div>
+
+      <div>
+        <p>{{ form.rotation.label }} {{ form.rotation }} Graus</p>
+        {% if form.rotation.errors %} {{ form.rotation.errors.pop() }} {% endif %}
+      </div>
+
+      <div>
+        <h2>Escala</h2>
+        <p>{{ form.height.label }} {{ form.height }} {{ form.width.label }} {{ form.width }}</p>
+      </div>
+
+      <div>
+        <h2>Corte</h2>
+        <p>
+          {{ form.left.label }} {{ form.left }} {{ form.top.label }} {{ form.top }} {{ form.right.label }} {{ form.right
+          }} {{ form.down.label }} {{ form.down }}
+        </p>
+      </div>
+
+      {{ form.submit }}
+    </form>
+    <div></div>
     <p>{{ test_var }}</p>
   </body>
 </html>
