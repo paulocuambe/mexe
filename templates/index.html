@@ -5,44 +5,53 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Manipulação de imagens</title>
+     <!-- Compiled and minified CSS -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+             
   </head>
   <body>
-    <h1>Bem vindo ao mundo do Flask!</h1>
-    <form action="" method="post" enctype="multipart/form-data">
-      {{ form.csrf_token }} 
-      
-      {% with messages = get_flashed_messages(category_filter=["success"]) %}
-          {% if messages %} 
-            <p style="color: green">{{ messages.pop() }}</p>
-          {% endif %} 
-      {% endwith %}
+    <h1>Opção II - Trabalho Práctico 1</h1>
+    <div class="row">
 
-      <div>
-        <p>{{ form.image.label }} {{ form.image }}</p>
-        {% if form.image.errors %} {{ form.image.errors.pop() }} {% endif %}
-      </div>
+      <form action="" method="post" enctype="multipart/form-data" class="col s12">
+        {{ form.csrf_token }} 
+        
+        {% with messages = get_flashed_messages(category_filter=["success"]) %}
+            {% if messages %} 
+              <p style="color: green">{{ messages.pop() }}</p>
+            {% endif %} 
+        {% endwith %}
 
-      <div>
-        <p>{{ form.rotation.label }} {{ form.rotation }} Graus</p>
-        {% if form.rotation.errors %} {{ form.rotation.errors.pop() }} {% endif %}
-      </div>
+        <div class="file-field input-field col s12">
+          <p>{{ form.image.label }} {{ form.image }}</p>
+          {% if form.image.errors %} {{ form.image.errors.pop() }} {% endif %}
+        </div>
 
-      <div>
-        <h2>Escala</h2>
-        <p>{{ form.height.label }} {{ form.height }} {{ form.width.label }} {{ form.width }}</p>
-      </div>
+        <div class="input-field col s12">
+          <p>{{ form.rotation.label }} {{ form.rotation }} Graus</p>
+          {% if form.rotation.errors %} {{ form.rotation.errors.pop() }} {% endif %}
+        </div>
 
-      <div>
-        <h2>Corte</h2>
-        <p>
-          {{ form.left.label }} {{ form.left }} {{ form.top.label }} {{ form.top }} {{ form.right.label }} {{ form.right
-          }} {{ form.down.label }} {{ form.down }}
-        </p>
-      </div>
+        <div class="input-field col s12">
+          <h2>Escala</h2>
+          <p>{{ form.height.label }} {{ form.height }} {{ form.width.label }} {{ form.width }}</p>
+        </div>
 
-      {{ form.submit }}
-    </form>
+        <div class="input-field col s12">
+          <h2>Corte</h2>
+          <p>
+            {{ form.left.label }} {{ form.left }} {{ form.top.label }} {{ form.top }} {{ form.right.label }} {{ form.right
+            }} {{ form.down.label }} {{ form.down }}
+          </p>
+        </div>
+
+        {{ form.submit }}
+      </form>
+  </div>
     <div></div>
     <p>{{ test_var }}</p>
+
+     <!-- Compiled and minified JavaScript -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   </body>
 </html>
