@@ -48,7 +48,7 @@ def home():
 
 #   rotate, left, right, top, down, height, width, submit
 def treat_image(image, rotation, scale=(), crop=()):
-    if len(crop) == 4 and crop[0] >= 0 and crop[1] >= 0 and crop[2] and crop[3]:
+    if len(crop) == 4 and type(crop[0]) == int and type(crop[1]) == int and crop[2] and crop[3]:
         print("CROPS")
         image = image.crop(crop)
 
