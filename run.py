@@ -31,13 +31,18 @@ def home():
 
         crop = (form_left, form_top, form_right, form_down)
         scale = (form_width, form_height)
-        image = treat_image(image,
-                            rotation=form_rotation,
-                            scale=scale,
-                            crop=crop)
-        image.show()
-        flash("Manipulação da imagem feita com sucesso", "success")
-        return redirect(url_for('home'))
+        try:
+            image = treat_image(image,
+                                rotation=form_rotation,
+                                scale=scale,
+                                crop=crop)
+            image.show()
+            flash("Manipulação da imagem feita com sucesso", "success")
+            return redirect(url_for('home'))
+        except:
+            flash("Erro ao manipular a imagem. Verifique os inputs fornecidos.", "error")
+            return redirect(url_for('home'))
+            
     return render_template('index.html', form=form)
 
 

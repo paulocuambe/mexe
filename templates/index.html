@@ -7,13 +7,19 @@
     <title>Manipulação de imagens</title>
   </head>
   <body>
-    <h1>Bem vindo ao mundo do Flask!</h1>
+    <h1>Manipulação de Imagem 2D</h1>
     <form action="" method="post" enctype="multipart/form-data">
       {{ form.csrf_token }} 
       
       {% with messages = get_flashed_messages(category_filter=["success"]) %}
           {% if messages %} 
             <p style="color: green">{{ messages.pop() }}</p>
+          {% endif %} 
+      {% endwith %}
+
+      {% with messages = get_flashed_messages(category_filter=["error"]) %}
+          {% if messages %} 
+            <p style="color: red;">{{ messages.pop() }}</p>
           {% endif %} 
       {% endwith %}
 
