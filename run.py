@@ -26,8 +26,8 @@ def home():
         # image.save("somme-sasa.png")
 
         form_rotation = int(form.rotation.data) if form.rotation.data else 0
-        form_height = int(form.height.data) if form.height.data else height
-        form_width = int(form.width.data) if form.width.data else width
+        form_height = int(form.height.data) if form.height.data else None
+        form_width = int(form.width.data) if form.width.data else None
 
         crop = (form_left, form_top, form_right, form_down)
         scale = (form_width, form_height)
@@ -52,7 +52,7 @@ def treat_image(image, rotation, scale=(), crop=()):
         print(rotation)
         image = image.rotate(rotation)
 
-    if len(scale) == 2:
+    if len(scale) == 2 and scale[0] and scale[1]:
         print("SCALES")
         image = image.resize(scale)
 
